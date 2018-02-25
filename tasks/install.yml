@@ -1,10 +1,7 @@
 ---
 
-- name: Installing SSH
+- name: Installing required packages
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
-  with_items:
-    - openssh-server
-    - openssh-client
+  with_items: "{{ ssh_packages }}"

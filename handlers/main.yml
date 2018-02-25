@@ -1,7 +1,23 @@
 ---
 
-- name: Restart SSH
+- name: Start ssh
   service:
-    name: ssh
-    state: restarted
-  when: ssh_service_state != 'stopped'
+    name  : ssh
+    state : started
+
+- name: Stop ssh
+  service:
+    name  : ssh
+    state : stopped
+
+- name: Restart ssh
+  service:
+    name  : ssh
+    state : restarted
+  when    : ssh_service_state != 'stopped'
+
+- name: Reload ssh
+  service:
+    name   : ssh
+    stated : reloaded
+  when     : ssh_service_state != 'stopped'
